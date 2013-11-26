@@ -14,8 +14,7 @@ class World{
   }
   
   void orbit(){
-    println(modeFar);
-    println(modeClose);
+    println(x);
     //When modeClose is activated:
     if(x<0){
       direction = 0;
@@ -34,9 +33,11 @@ class World{
     
     //When modeFar is activated
     else if(x>width/2 && direction == 1){
+      modeClose = 0;
       modeFar = 1;
     }
     else if(x<width/2 && direction == 1){
+      modeClose = 0;
       modeFar = 2;
     }
     
