@@ -11,7 +11,6 @@ void setup(){
 void draw(){
   background(0);
   myWorld.orbit();
- // println(myWorld.modeFar);
 }
 
 

@@ -1,25 +1,26 @@
 class World{
-  float speed, size;
+  float speed, size, iSize;
   float x = 0;
   int y = height/2;
   float sizeChange;
   int modeClose = 1;
   int modeFar = 0;
   int direction = 0;
+  int modeSmall = 0;
   //Constructor:
   World(float tempSpeed, float tempSize){
     speed = tempSpeed;
+    iSize = tempSize;
     size = tempSize;
     sizeChange = width/size;
   }
   
   void orbit(){
     println(x);
-    //When modeClose is activated:
-    if(x<0){
+    if(x<iSize){
       direction = 0;
     }
-    else if(x>width){
+    else if(x>width-iSize){
       direction = 1;
     }
     
@@ -41,6 +42,27 @@ class World{
       modeFar = 2;
     }
     
+    if(size<0 && modeClose == 1){
+      modeSmall = 1;
+      ellipse(x,y,0,0); 
+      x+=speed;
+    }
+    else if(size<0 && modeClose == 2){
+      modeSmall = 1;
+      ellipse(x,y,0,0); 
+      x+=speed;
+    }
+    else if(size<0 && modeFar == 1){
+      modeSmall = 1;
+      ellipse(x,y,0,0); 
+      x-=speed;
+    }
+    else if(size<0 && modeFar == 2){
+      modeSmall = 1;
+      ellipse(x,y,0,0); 
+      x-=speed;
+    }
+    
     if(modeClose == 1){
       fill(0,0,120);
       ellipse(x,y,size,size);
@@ -54,7 +76,6 @@ class World{
       size-= sizeChange;
     }
     else if(modeFar == 1){
-      println(modeFar);
       fill(0,0,120);
       ellipse(x,y,size,size);
       x-=speed;
@@ -66,5 +87,6 @@ class World{
       x-=speed;
       size+= sizeChange;
     }
+    
   }
 }
