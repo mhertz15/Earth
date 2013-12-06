@@ -1,7 +1,7 @@
 class World{
-  float speed, size, iSize;
+  float speed, size, iSize, y;
+  int r, g, b;
   float x = 0;
-  int y = height/2;
   float sizeChange;
   int modeClose = 1;
   int modeFar = 0;
@@ -9,7 +9,11 @@ class World{
   int modeSmall = 0;
   
   //Constructor:
-  World(float tempSpeed, float tempSize, float ){
+  World(float tempSpeed, float tempSize, float tempY, int tempR, int tempB, int tempG){
+    y = tempY;
+    r = tempR;
+    b = tempB;
+    g = tempG;
     speed = tempSpeed;
     //"iSize" is initial size. I will use "size" for my variable size
     iSize = tempSize;
@@ -52,25 +56,25 @@ class World{
     
     //What modeClose and modeFar actually does:
     if(modeClose == 1 && modeSmall == 0){
-      fill(0,0,120);
+      fill(r,g,b);
       ellipse(x,y,size,size);
       x+=speed;
       size+= sizeChange;
     }
     else if(modeClose == 2 && modeSmall == 0){
-      fill(0,0,120);
+      fill(r,g,b);
       ellipse(x,y,size,size);
       x+=speed;
       size-= sizeChange;
     }
     else if(modeFar == 1 && modeSmall == 0){
-      fill(0,0,120);
+      fill(r,g,b);
       ellipse(x,y,size,size);
       x-=speed;
       size-= sizeChange;
     }
     else if(modeFar == 2 && modeSmall == 0){
-      fill(0,0,120);
+      fill(r,g,b);
       ellipse(x,y,size,size);
       x-=speed;
       size+= sizeChange;
